@@ -1,0 +1,3 @@
+A100 Apples 10 1.50 15.00
+B200 Bread 5 3.25 16.25
+Total inventory value: 31.25
