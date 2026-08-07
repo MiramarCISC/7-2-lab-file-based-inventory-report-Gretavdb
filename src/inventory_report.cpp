@@ -56,6 +56,7 @@ bool writeInventoryReport(string filename, const InventoryItem items[], int coun
         return false;
     }
     ofstream outputFile(filename);
+
     if (!outputFile.is_open()) {
         return false;
     }
@@ -69,6 +70,7 @@ bool writeInventoryReport(string filename, const InventoryItem items[], int coun
                << setw(15) << "Value"
                << endl;
 
+    // PR: Write each inventory item to the report.
     for (int i = 0; i < count; i++) {
         outputFile << left
                    << setw(12) << items[i].sku
@@ -88,6 +90,7 @@ bool writeInventoryReport(string filename, const InventoryItem items[], int coun
     return true;
 }
 
+// PR: Calculates the total value of all inventory items.
 double calculateTotalInventoryValue(const InventoryItem items[], int count) {
     if (items == nullptr || count <= 0) {
         return 0.0;
@@ -102,6 +105,7 @@ double calculateTotalInventoryValue(const InventoryItem items[], int count) {
     return total;
 }
 
+// PR: Searches for an item using its SKU.
 int findItemBySku(const InventoryItem items[], int count, string sku) {
     if (items == nullptr || count <= 0) {
         return -1;
@@ -124,6 +128,7 @@ int findHighestValueItemIndex(const InventoryItem items[], int count) {
     int highestIndex = 0;
     double highestValue = calculateItemValue(items[0]);
 
+    // PR: Find the item with the highest value.
     for (int i = 1; i < count; i++) {
         double currentValue = calculateItemValue(items[i]);
 
